@@ -1,0 +1,689 @@
+/* ==========================================
+   dashboard.css - Part 1
+   Student Attendance Reporting System
+========================================== */
+
+/* Dashboard Layout */
+
+.dashboard{
+    display:flex;
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#0f766e);
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:270px;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(20px);
+    border-right:1px solid rgba(255,255,255,.15);
+    padding:30px 20px;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+}
+
+.sidebar .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.sidebar .logo i{
+    font-size:34px;
+    color:#38bdf8;
+}
+
+.sidebar .logo h2{
+    color:#fff;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin-bottom:15px;
+}
+
+.sidebar ul li a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:#fff;
+    padding:15px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a{
+    background:#38bdf8;
+}
+
+/* Main Content */
+
+.main-content{
+    flex:1;
+    margin-left:270px;
+    padding:30px;
+}
+
+/* Topbar */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.topbar h1{
+    font-size:34px;
+    color:#fff;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,.10);
+    padding:10px 16px;
+    border-radius:12px;
+}
+
+.profile i{
+    font-size:30px;
+    color:#38bdf8;
+}
+
+.profile span{
+    color:#fff;
+}
+
+/* Welcome Card */
+
+.welcome{
+    padding:30px;
+    margin-bottom:30px;
+}
+
+.welcome h2{
+    margin-bottom:10px;
+    font-size:30px;
+}
+
+.welcome p{
+    color:#d1d5db;
+}
+
+/* Dashboard Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.card{
+    padding:30px;
+    text-align:center;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card i{
+    font-size:40px;
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+.card h2{
+    font-size:36px;
+    margin-bottom:10px;
+    color:#fff;
+}
+
+.card p{
+    color:#d1d5db;
+}
+/* ==========================================
+   dashboard.css - Part 2
+   Analytics • Quick Actions • Tables
+========================================== */
+
+/* ===========================
+   Analytics Section
+=========================== */
+
+.analytics{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+    margin-bottom:35px;
+}
+
+.analytics-card{
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.card-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.card-title h2{
+    color:#fff;
+    font-size:24px;
+}
+
+/* ===========================
+   Chart Placeholder
+=========================== */
+
+.chart-placeholder{
+    height:320px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border:2px dashed rgba(255,255,255,.20);
+    border-radius:18px;
+    text-align:center;
+}
+
+.chart-placeholder i{
+    font-size:70px;
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+.chart-placeholder h3{
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.chart-placeholder p{
+    color:#d1d5db;
+}
+
+/* ===========================
+   Quick Actions
+=========================== */
+
+.quick-actions{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.quick-actions a{
+    text-align:center;
+    justify-content:center;
+}
+
+/* ===========================
+   Attendance Table
+=========================== */
+
+.attendance-table{
+    margin-bottom:35px;
+    padding:30px;
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    gap:20px;
+}
+
+.table-header h2{
+    color:#fff;
+}
+
+.table-header input{
+    width:280px;
+    padding:12px 18px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
+}
+
+.table-header input::placeholder{
+    color:#cbd5e1;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+}
+
+thead{
+    background:#38bdf8;
+}
+
+thead th{
+    padding:16px;
+    color:#fff;
+    text-align:left;
+}
+
+tbody tr{
+    border-bottom:1px solid rgba(255,255,255,.10);
+    transition:.3s;
+}
+
+tbody tr:hover{
+    background:rgba(255,255,255,.08);
+}
+
+tbody td{
+    padding:16px;
+    color:#fff;
+}
+
+/* ===========================
+   Status Badges
+=========================== */
+
+.status-present{
+    display:inline-block;
+    background:#10b981;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+.status-absent{
+    display:inline-block;
+    background:#ef4444;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+/* ===========================
+   Recent Activity
+=========================== */
+
+.recent-activity{
+    padding:30px;
+    margin-bottom:35px;
+}
+
+.activity-list{
+    list-style:none;
+}
+
+.activity-list li{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.10);
+    color:#fff;
+}
+
+.activity-list li:last-child{
+    border-bottom:none;
+}
+
+.activity-list i{
+    width:45px;
+    height:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:#38bdf8;
+    color:#fff;
+    font-size:18px;
+}
+
+/* ===========================
+   Hover Effects
+=========================== */
+
+.analytics-card:hover,
+.attendance-table:hover,
+.recent-activity:hover{
+    transform:translateY(-6px);
+    transition:.3s;
+}
+/* ==========================================
+   dashboard.css - Part 3
+   Footer • Responsive • Dark Theme
+========================================== */
+
+/* ===========================
+   Dashboard Footer
+=========================== */
+
+.dashboard-footer{
+    margin-top:40px;
+    padding:25px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.15);
+    color:#d1d5db;
+}
+
+.dashboard-footer p{
+    margin:5px 0;
+    font-size:15px;
+}
+
+/* ===========================
+   Glass Hover
+=========================== */
+
+.glass{
+    transition:.3s ease;
+}
+
+.glass:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+.main-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.main-content::-webkit-scrollbar-thumb{
+    background:#38bdf8;
+    border-radius:10px;
+}
+
+/* ===========================
+   Responsive - Tablet
+=========================== */
+
+@media (max-width:992px){
+
+.sidebar{
+    width:220px;
+}
+
+.main-content{
+    margin-left:220px;
+}
+
+.analytics{
+    grid-template-columns:1fr;
+}
+
+.cards{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.table-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.table-header input{
+    width:100%;
+}
+
+}
+
+/* ===========================
+   Responsive - Mobile
+=========================== */
+
+@media (max-width:768px){
+
+.dashboard{
+    flex-direction:column;
+}
+
+.sidebar{
+
+    position:relative;
+
+    width:100%;
+
+    height:auto;
+
+    border-right:none;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.sidebar ul{
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:12px;
+
+    padding-bottom:10px;
+
+}
+
+.sidebar ul li{
+
+    margin:0;
+
+    white-space:nowrap;
+
+}
+
+.sidebar ul li a{
+
+    padding:12px 18px;
+
+}
+
+.main-content{
+
+    margin-left:0;
+
+    padding:20px;
+
+}
+
+.topbar{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.profile{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.analytics{
+
+    grid-template-columns:1fr;
+
+}
+
+.quick-actions{
+
+    gap:15px;
+
+}
+
+table{
+
+    display:block;
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
+}
+
+}
+
+/* ===========================
+   Responsive - Small Mobile
+=========================== */
+
+@media (max-width:480px){
+
+.topbar h1{
+    font-size:28px;
+}
+
+.card{
+    padding:20px;
+}
+
+.card h2{
+    font-size:30px;
+}
+
+.chart-placeholder{
+    height:220px;
+}
+
+.chart-placeholder i{
+    font-size:50px;
+}
+
+.analytics-card,
+.attendance-table,
+.recent-activity{
+    padding:20px;
+}
+
+.dashboard-footer{
+    font-size:14px;
+}
+
+}
+
+/* ===========================
+   Dark Theme
+=========================== */
+
+body.dark .sidebar{
+
+    background:rgba(15,23,42,.95);
+
+}
+
+body.dark .topbar,
+body.dark .dashboard-footer{
+
+    color:#ffffff;
+
+}
+
+body.dark .card,
+body.dark .analytics-card,
+body.dark .attendance-table,
+body.dark .recent-activity,
+body.dark .welcome{
+
+    background:rgba(15,23,42,.90);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark input{
+
+    background:#1e293b;
+
+    color:#ffffff;
+
+}
+
+body.dark table thead{
+
+    background:#2563eb;
+
+}
+
+body.dark tbody tr:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/* ===========================
+   Smooth Animations
+=========================== */
+
+.sidebar,
+.topbar,
+.card,
+.analytics-card,
+.attendance-table,
+.recent-activity{
+
+    animation:fadeInUp .7s ease;
+
+}
+
+@keyframes fadeInUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

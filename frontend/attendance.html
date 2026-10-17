@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance | Student Attendance Tracking System</title>
+
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animation.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- ================= Sidebar ================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <i class="fas fa-user-graduate"></i>
+
+                <h2>SARS</h2>
+
+            </div>
+
+            <ul>
+
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="students.html">
+                        <i class="fas fa-users"></i>
+                        Students
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="attendance.html">
+                        <i class="fas fa-calendar-check"></i>
+                        Attendance
+                    </a>
+                </li>
+
+                <li>
+                    <a href="reports.html">
+                        <i class="fas fa-file-alt"></i>
+                        Reports
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+
+            </ul>
+
+        </aside>
+
+        <!-- ================= Main Content ================= -->
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <h1>Attendance Management</h1>
+
+                <div class="top-actions">
+
+                    <button id="themeBtn">
+
+                        <i class="fas fa-moon"></i>
+
+                    </button>
+
+                    <div class="profile">
+
+                        <i class="fas fa-user-circle"></i>
+
+                        <span>Administrator</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- ================= Attendance Controls ================= -->
+
+            <section class="glass attendance-table">
+
+                <div class="table-header">
+
+                    <h2>Mark Daily Attendance</h2>
+
+                    <input type="date" id="attendanceDate">
+
+                </div>
+
+                <div class="table-header">
+
+                    <input type="text" id="searchAttendance" placeholder="Search Student...">
+
+                    <button class="btn-primary" id="markAllPresent">
+
+                        <i class="fas fa-check-double"></i>
+
+                        Mark All Present
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- ================= Statistics ================= -->
+
+            <section class="cards">
+
+                <div class="card glass">
+
+                    <i class="fas fa-users"></i>
+
+                    <h2 id="totalStudents">0</h2>
+
+                    <p>Total Students</p>
+
+                </div>
+
+                <div class="card glass">
+
+                    <i class="fas fa-user-check"></i>
+
+                    <h2 id="presentCount">0</h2>
+
+                    <p>Present</p>
+
+                </div>
+
+                <div class="card glass">
+
+                    <i class="fas fa-user-xmark"></i>
+
+                    <h2 id="absentCount">0</h2>
+
+                    <p>Absent</p>
+
+                </div>
+
+                <div class="card glass">
+
+                    <i class="fas fa-percent"></i>
+
+                    <h2 id="attendancePercent">0%</h2>
+
+                    <p>Attendance</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ATTENDANCE TABLE ================= -->
+
+            <section class="glass attendance-table">
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h2>Student Attendance</h2>
+
+                        <p class="table-subtitle">
+                            Select Present or Absent for each student.
+                        </p>
+
+                    </div>
+
+                    <span id="selectedDateLabel">
+                        Today
+                    </span>
+
+                </div>
+
+
+                <!-- Attendance Table -->
+
+                <div class="table-responsive">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>#</th>
+
+                                <th>Student ID</th>
+
+                                <th>Roll No.</th>
+
+                                <th>Student Name</th>
+
+                                <th>Branch</th>
+
+                                <th>Semester</th>
+
+                                <th>Attendance Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="attendanceTable">
+
+                            <!-- Students will be loaded using JavaScript -->
+
+                            <tr>
+
+                                <td colspan="6" style="text-align:center;">
+
+                                    No students available.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ATTENDANCE ACTIONS ================= -->
+
+            <section class="analytics">
+
+                <!-- Save Attendance -->
+
+                <div class="analytics-card glass">
+
+                    <div class="card-title">
+
+                        <h2>
+                            Attendance Actions
+                        </h2>
+
+                    </div>
+
+                    <div class="quick-actions">
+
+                        <button type="button" class="btn-primary" id="saveAttendance">
+
+                            <i class="fas fa-save"></i>
+
+                            Save Attendance
+
+                        </button>
+
+
+                        <button type="button" class="btn-primary" id="resetAttendance">
+
+                            <i class="fas fa-rotate-left"></i>
+
+                            Reset
+
+                        </button>
+
+                        <button type="button" class="btn-primary" onclick="exportAttendance()">
+
+                            <i class="fas fa-file-csv"></i>
+
+                            Export CSV
+
+                        </button>
+
+
+                        <button type="button" class="btn-primary" id="printAttendance" onclick="window.print()">
+
+                            <i class="fas fa-print"></i>
+
+                            Print
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Attendance Summary -->
+
+                <div class="analytics-card glass">
+
+                    <div class="card-title">
+
+                        <h2>
+                            Today's Summary
+                        </h2>
+
+                    </div>
+
+                    <div class="summary-list">
+
+                        <div class="summary-item">
+
+                            <span>
+                                Total Students
+                            </span>
+
+                            <strong id="summaryTotal">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                Present
+                            </span>
+
+                            <strong id="summaryPresent">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                Absent
+                            </span>
+
+                            <strong id="summaryAbsent">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                Attendance
+                            </span>
+
+                            <strong id="summaryPercentage">
+                                0%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= STATUS INFORMATION ================= -->
+
+            <section class="glass recent-activity">
+
+                <div class="card-title">
+
+                    <h2>
+                        Attendance Instructions
+                    </h2>
+
+                </div>
+
+                <ul class="activity-list">
+
+                    <li>
+
+                        <i class="fas fa-check"></i>
+
+                        Select <strong>Present</strong> for students who
+                        attended the class.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fas fa-xmark"></i>
+
+                        Select <strong>Absent</strong> for students who
+                        did not attend.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fas fa-calendar"></i>
+
+                        Select the correct attendance date before saving.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fas fa-database"></i>
+
+                        Attendance records are saved to the connected database.
+
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- ===== ATTENDANCE PART 2 ENDS HERE ===== -->
+            <!-- ================= FOOTER ================= -->
+
+            <footer class="dashboard-footer">
+
+                <p>
+                    &copy; 2026 Student Attendance Reporting System
+                </p>
+
+                <p>
+                    Developed using HTML, CSS & JavaScript
+                </p>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="api.js"></script>
+    <script src="attendance.js"></script>
+    <script src="app.js"></script>
+
+
+    <script>
+
+        /* ==========================================
+           DARK / LIGHT MODE
+        ========================================== */
+
+        const themeBtn = document.getElementById("themeBtn");
+
+
+        /* Load Saved Theme */
+
+        if (localStorage.getItem("theme") === "dark") {
+
+            document.body.classList.add("dark");
+
+            if (themeBtn) {
+
+                themeBtn.innerHTML =
+                    '<i class="fas fa-sun"></i>';
+
+            }
+
+        }
+
+
+        /* Change Theme */
+
+        if (themeBtn) {
+
+            themeBtn.addEventListener("click", function () {
+
+                document.body.classList.toggle("dark");
+
+                if (document.body.classList.contains("dark")) {
+
+                    localStorage.setItem("theme", "dark");
+
+                    themeBtn.innerHTML =
+                        '<i class="fas fa-sun"></i>';
+
+                } else {
+
+                    localStorage.setItem("theme", "light");
+
+                    themeBtn.innerHTML =
+                        '<i class="fas fa-moon"></i>';
+
+                }
+
+            });
+
+        }
+
+
+        /* ==========================================
+           DEFAULT ATTENDANCE DATE
+        ========================================== */
+
+        const attendanceDate =
+            document.getElementById("attendanceDate");
+
+
+        if (attendanceDate) {
+
+            const today = localISODate();
+
+            attendanceDate.value = today;
+
+        }
+
+
+        /* ==========================================
+           DISPLAY SELECTED DATE
+        ========================================== */
+
+        if (attendanceDate) {
+
+            attendanceDate.addEventListener("change", function () {
+
+                const dateLabel =
+                    document.getElementById("selectedDateLabel");
+
+                if (!dateLabel) return;
+
+                const date =
+                    new Date(this.value + "T00:00:00");
+
+                dateLabel.textContent =
+                    date.toLocaleDateString("en-IN", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    });
+
+            });
+
+        }
+
+
+        /* ==========================================
+           MARK ALL PRESENT
+        ========================================== */
+
+        const markAllPresent =
+            document.getElementById("markAllPresent");
+
+
+        if (markAllPresent) {
+
+            markAllPresent.addEventListener("click", function () {
+
+                const presentButtons =
+                    document.querySelectorAll(
+                        'input[value="Present"]'
+                    );
+
+                presentButtons.forEach(function (button) {
+
+                    button.checked = true;
+
+                });
+
+                if (typeof updateAttendanceSummary === "function") {
+
+                    updateAttendanceSummary();
+
+                }
+
+            });
+
+        }
+
+
+        /* ==========================================
+           RESET ATTENDANCE
+        ========================================== */
+
+        const resetAttendance =
+            document.getElementById("resetAttendance");
+
+
+        if (resetAttendance) {
+
+            resetAttendance.addEventListener("click", function () {
+
+                const radios =
+                    document.querySelectorAll(
+                        'input[name^="status-"]'
+                    );
+
+                radios.forEach(function (radio) {
+
+                    radio.checked = false;
+
+                });
+
+                if (typeof updateAttendanceSummary === "function") {
+
+                    updateAttendanceSummary();
+
+                }
+
+            });
+
+        }
+
+
+        /* ==========================================
+           SEARCH ATTENDANCE
+        ========================================== */
+
+        const searchAttendance =
+            document.getElementById("searchAttendance");
+
+
+        if (searchAttendance) {
+
+            searchAttendance.addEventListener("input", function () {
+
+                const keyword =
+                    this.value.toLowerCase().trim();
+
+                const rows =
+                    document.querySelectorAll(
+                        "#attendanceTable tr"
+                    );
+
+                rows.forEach(function (row) {
+
+                    const text =
+                        row.innerText.toLowerCase();
+
+                    row.style.display =
+                        text.includes(keyword)
+                            ? ""
+                            : "none";
+
+                });
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

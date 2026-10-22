@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Attendance Reporting System</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="site-refresh.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                <h2>SARS</h2>
+
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="features.html">Features</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+            <div class="nav-buttons">
+
+                <button id="themeBtn" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="admin-login.html" class="login-btn">
+
+                    Admin sign in
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <div class="hero-kicker"><span class="kicker-dot"></span> Attendance, made clear</div>
+
+            <h1>
+
+                Attendance,
+                <br>
+                <span>in good order.</span>
+
+            </h1>
+
+            <p>
+
+                Bring student records, subject rosters and daily attendance into one calm, connected workspace. Less time sorting spreadsheets. More time with your students.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="teacher-login.html" class="btn-primary">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Open teacher workspace
+
+                </a>
+
+                <a href="features.html" class="btn-secondary">
+
+                <i class="fa-solid fa-table-cells"></i>
+                    Explore the platform
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="hero-right">
+
+            <div class="glass-card">
+
+                <div class="card-header">
+
+                    <i class="fa-solid fa-chart-pie"></i>
+
+                    <span>Attendance overview</span>
+                    <span class="preview-tag"><i></i> SAMPLE VIEW</span>
+
+                </div>
+
+                <div class="progress-box">
+
+                    <h3>Today at a glance</h3>
+
+                    <div class="circle">
+
+                        <span>95%</span>
+
+                    </div>
+
+                </div>
+
+                <div class="mini-cards">
+
+                    <div class="mini">
+
+                        <h2>520</h2>
+
+                        <p>Students</p>
+
+                    </div>
+
+                    <div class="mini">
+
+                        <h2>495</h2>
+
+                        <p>Present</p>
+
+                    </div>
+
+                    <div class="mini">
+
+                        <h2>25</h2>
+
+                        <p>To follow up</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+   
+     <!-- ================= FEATURES SECTION ================= -->
+
+<section class="features" id="features">
+
+    <div class="section-title">
+
+        <span class="section-kicker">A better daily rhythm</span>
+        <h2>Everything in sync.<br><span>Nothing in the way.</span></h2>
+
+        <p>
+            One clear place for the people, classes and records that make attendance work.
+        </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <i class="fas fa-user-plus"></i>
+            <h3>Add Students</h3>
+            <p>
+                Keep names, registration numbers and cohort details together in one searchable directory.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Take Attendance</h3>
+            <p>
+                Choose a subject and mark the students on its assigned roster.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Reports</h3>
+            <p>
+                Review attendance by date and export a clear report as CSV.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-search"></i>
+            <h3>Search Students</h3>
+            <p>
+                Find a student by name or registration number in seconds.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-cloud-download-alt"></i>
+            <h3>Online Database</h3>
+            <p>
+                Keep student, subject and attendance records in one organization workspace.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h3>Responsive Design</h3>
+            <p>
+                Use the same clear workspace on desktop, tablet or phone.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="statistics">
+
+    <div class="section-title">
+
+        <span class="section-kicker">Built around your workflow</span>
+        <h2>One connected system.</h2>
+
+        <p>
+            A simple path from student setup to a useful class report.
+        </p>
+
+    </div>
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h2>01</h2>
+            <p>Shared student directory</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-user-check"></i>
+            <h2>02</h2>
+            <p>Purpose-built workspaces</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-user-xmark"></i>
+            <h2>03</h2>
+            <p>Subject-based attendance</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-percent"></i>
+            <h2>CSV</h2>
+            <p>Reports ready to export</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="about-left">
+
+        <div class="hero-illustration">
+    <i class="fas fa-user-graduate"></i>
+</div>
+
+    </div>
+
+    <div class="about-right">
+
+        <span class="section-kicker">Thoughtfully connected</span>
+        <h2>Made for the way<br>schools actually work.</h2>
+
+        <p>
+
+            Attendance should be easy to record and easy to trust. This workspace brings your organization’s students, teaching team and class records together.
+
+        </p>
+
+        <p>
+
+            Administrators set up cohorts and assign subjects. Teachers see the classes they teach, mark attendance against the right roster and take a clean report with them when they need it.
+
+        </p>
+
+        <ul>
+
+            <li>
+                <i class="fas fa-check-circle"></i>
+                Fast & Responsive
+            </li>
+
+            <li>
+                <i class="fas fa-check-circle"></i>
+                Shared Organization Database
+            </li>
+
+            <li>
+                <i class="fas fa-check-circle"></i>
+                Role-Based Access
+            </li>
+
+            <li>
+                <i class="fas fa-check-circle"></i>
+                Reports that are ready to share
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="why-us">
+
+    <div class="section-title">
+
+        <h2>Made to make the day easier.</h2>
+
+        <p>
+            Practical tools for the people who keep classes running.
+        </p>
+
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <i class="fas fa-bolt"></i>
+
+            <h3>Quick to record</h3>
+
+            <p>
+
+                Start with the right class list and record attendance without extra steps.
+
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <i class="fas fa-shield-alt"></i>
+
+            <h3>Clear access</h3>
+
+            <p>
+
+                Administrators manage the organization. Teachers work within their assigned subjects.
+
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <i class="fas fa-chart-pie"></i>
+
+            <h3>Useful context</h3>
+
+            <p>
+
+                See attendance patterns across a date range and follow up with confidence.
+
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <i class="fas fa-laptop-code"></i>
+
+            <h3>Useful reports</h3>
+
+            <p>
+
+                Review attendance history and export a date-range matrix as CSV.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===== End of Part 2 ===== -->
+ <!-- ================= TESTIMONIALS SECTION ================= -->
+
+<section class="testimonials">
+
+    <div class="section-title">
+        <span class="section-kicker">Designed for real routines</span>
+        <h2>A little less admin.<br><span>A lot more clarity.</span></h2>
+        <p>Every part of the workflow has a clear place and a clear purpose.</p>
+    </div>
+
+    <div class="testimonial-container">
+
+        <div class="testimonial-card">
+            <i class="fas fa-address-book quote"></i>
+
+            <p>
+                Keep student identity and cohort details organized in one searchable directory.
+            </p>
+
+            <div class="user-info">
+                    <i class="fas fa-users user-icon"></i>
+
+                <div>
+                    <h4>Student records</h4>
+                    <span>One source for every class</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <i class="fas fa-calendar-check quote"></i>
+
+            <p>
+                Assign subjects to teachers and make the eligible class roster clear before attendance begins.
+            </p>
+
+            <div class="user-info">
+                    <i class="fas fa-chalkboard-user user-icon"></i>
+
+                <div>
+                    <h4>Subject-first attendance</h4>
+                    <span>The right roster, every time</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <i class="fas fa-file-csv quote"></i>
+
+            <p>
+                Move from class records to attendance history, then export a practical report in a few steps.
+            </p>
+
+            <div class="user-info">
+                    <i class="fas fa-chart-column user-icon"></i>
+
+                <div>
+                    <h4>Reports that travel</h4>
+                    <span>Useful beyond the dashboard</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+
+        <span class="section-kicker">Need a hand?</span>
+        <h2>Let’s make attendance<br>feel effortless.</h2>
+
+        <p>
+            Ask about access, setup or using the workspace. We’ll point you in the right direction.
+        </p>
+
+    </div>
+
+    <div class="contact-container">
+
+        <!-- Contact Information -->
+
+        <div class="contact-info">
+
+            <h3>Get In Touch</h3>
+
+            <p>
+                Tell us what you need help with. For account access, contact your organization administrator.
+            </p>
+
+            <div class="info-box">
+
+                <i class="fas fa-map-marker-alt"></i>
+
+                <div>
+
+                    <h4>Account access</h4>
+                    <p>Your organization administrator can help.</p>
+
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <i class="fas fa-phone"></i>
+
+                <div>
+
+                    <h4>Student records</h4>
+                    <p>Send the registration number and a short description.</p>
+
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <i class="fas fa-envelope"></i>
+
+                <div>
+
+                    <h4>Keep it secure</h4>
+                    <p>Never include a password in your message.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Contact Form -->
+
+        <div class="contact-form">
+
+            <form>
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <textarea
+                        rows="6"
+                        name="message"
+                        placeholder="Write your message..."
+                        required></textarea>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    <i class="fas fa-paper-plane"></i>
+
+                    Send Message
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===== End of Part 3A ===== -->
+ <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h2>
+                <i class="fas fa-user-graduate"></i>
+                Student Attendance
+            </h2>
+
+            <p>
+                A modern Student Attendance Reporting System
+                developed using HTML, CSS and JavaScript.
+                Role-based student, subject and attendance management.
+            </p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="features.html">Features</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Modules</h3>
+
+            <ul>
+
+                <li><a href="admin-login.html">Administrator panel</a></li>
+
+                <li><a href="teacher-login.html">Teacher panel</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Get started</h3>
+
+            <ul>
+                <li><a href="admin-login.html">Administrator sign in</a></li>
+                <li><a href="teacher-login.html">Teacher sign in</a></li>
+                <li><a href="contact.html">Get help</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © 2026 Student Attendance Reporting System.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+<!-- ================= SCROLL TO TOP ================= -->
+
+<button id="scrollTop">
+
+    <i class="fas fa-arrow-up"></i>
+
+</button>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.onclick = () => {
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        themeBtn.innerHTML =
+        '<i class="fas fa-sun"></i>';
+
+    }
+
+    else{
+
+        themeBtn.innerHTML =
+        '<i class="fas fa-moon"></i>';
+
+    }
+
+};
+
+// Scroll Button
+
+const scrollBtn = document.getElementById("scrollTop");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 300){
+
+        scrollBtn.style.display="flex";
+
+    }
+
+    else{
+
+        scrollBtn.style.display="none";
+
+    }
+
+});
+
+scrollBtn.onclick = ()=>{
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+};
+
+</script>
+
+<!-- External JS -->
+
+<script src="api.js"></script>
+<script src="site-theme.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

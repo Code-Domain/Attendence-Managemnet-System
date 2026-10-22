@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Student Attendance System</title>
+
+    <!-- CSS -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="animation.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fas fa-user-graduate"></i>
+
+            <h2>SARS</h2>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <a href="dashboard.html">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="students.html">
+                    <i class="fas fa-users"></i>
+                    Students
+                </a>
+            </li>
+
+            <li>
+                <a href="attendance.html">
+                    <i class="fas fa-calendar-check"></i>
+                    Attendance
+                </a>
+            </li>
+
+            <li>
+                <a href="reports.html">
+                    <i class="fas fa-chart-line"></i>
+                    Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Home
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= Main Content ================= -->
+
+    <main class="main-content">
+
+        <!-- Top Bar -->
+
+        <header class="topbar">
+
+            <h1>
+
+                Dashboard
+
+            </h1>
+
+            <div class="top-actions">
+
+                <button id="themeBtn">
+
+                    <i class="fas fa-moon"></i>
+
+                </button>
+
+                <div class="profile">
+
+                    <i class="fas fa-user-circle"></i>
+
+                    <span>Administrator</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Welcome -->
+
+        <section class="welcome glass">
+
+            <h2>
+
+                Welcome 👋
+
+            </h2>
+
+            <p>
+
+                Manage students, attendance and reports
+                from one modern dashboard.
+
+            </p>
+
+        </section>
+
+        <!-- Dashboard Cards -->
+
+        <section class="cards">
+
+            <div class="card glass">
+
+                <i class="fas fa-users"></i>
+
+                <h2 id="totalStudents">
+
+                    0
+
+                </h2>
+
+                <p>Total Students</p>
+
+            </div>
+
+            <div class="card glass">
+
+                <i class="fas fa-user-check"></i>
+
+                <h2 id="presentStudents">
+
+                    0
+
+                </h2>
+
+                <p>Present Today</p>
+
+            </div>
+
+            <div class="card glass">
+
+                <i class="fas fa-user-xmark"></i>
+
+                <h2 id="absentStudents">
+
+                    0
+
+                </h2>
+
+                <p>Absent Today</p>
+
+            </div>
+
+            <div class="card glass">
+
+                <i class="fas fa-chart-pie"></i>
+
+                <h2 id="attendancePercent">
+
+                    0%
+
+                </h2>
+
+                <p>Attendance %</p>
+
+            </div>
+
+        </section>
+
+<!-- ===== Dashboard Part 1 Ends Here ===== -->
+         <!-- ================= Analytics Section ================= -->
+
+        <section class="analytics">
+
+            <!-- Attendance Overview -->
+
+            <div class="analytics-card glass">
+
+                <div class="card-title">
+
+                    <h2>
+
+                        Attendance Overview
+
+                    </h2>
+
+                    <span class="badge-success">
+
+                        Live
+
+                    </span>
+
+                </div>
+
+                <div class="chart-placeholder">
+
+                    <i class="fas fa-chart-column"></i>
+
+                    <h3>Attendance Chart</h3>
+
+                    <p>
+
+                        Daily attendance statistics
+                        will appear here.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Quick Actions -->
+
+            <div class="analytics-card glass">
+
+                <div class="card-title">
+
+                    <h2>
+
+                        Quick Actions
+
+                    </h2>
+
+                </div>
+
+                <div class="quick-actions">
+
+                    <a href="students.html" class="btn-primary">
+
+                        <i class="fas fa-user-plus"></i>
+
+                        Add Student
+
+                    </a>
+
+                    <a href="attendance.html" class="btn-primary">
+
+                        <i class="fas fa-calendar-check"></i>
+
+                        Take Attendance
+
+                    </a>
+
+                    <a href="reports.html" class="btn-primary">
+
+                        <i class="fas fa-file-lines"></i>
+
+                        View Reports
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= Today's Attendance ================= -->
+
+        <section class="glass attendance-table">
+
+            <div class="table-header">
+
+                <h2>
+
+                    Today's Attendance
+
+                </h2>
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="Search Student...">
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Roll No</th>
+
+                        <th>Name</th>
+
+                        <th>Class</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="attendanceTable">
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            No attendance records found.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- ================= Recent Activity ================= -->
+
+        <section class="glass recent-activity">
+
+            <div class="card-title">
+
+                <h2>
+
+                    Recent Activity
+
+                </h2>
+
+            </div>
+
+            <ul class="activity-list">
+
+                <li>
+
+                    <i class="fas fa-user-plus"></i>
+
+                    New student added.
+
+                </li>
+
+                <li>
+
+                    <i class="fas fa-calendar-check"></i>
+
+                    Attendance marked successfully.
+
+                </li>
+
+                <li>
+
+                    <i class="fas fa-chart-line"></i>
+
+                    Monthly report generated.
+
+                </li>
+
+                <li>
+
+                    <i class="fas fa-database"></i>
+
+                    Data saved to Local Storage.
+
+                </li>
+
+            </ul>
+
+        </section>
+
+<!-- ===== Dashboard Part 2 Ends Here ===== -->
+         <!-- ================= Footer ================= -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+
+                © 2026 Student Attendance Reporting System
+
+            </p>
+
+            <p>
+
+                Developed using HTML, CSS & JavaScript
+
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- ================= JavaScript ================= -->
+
+<script src="api.js"></script>
+<script src="dashboard.js"></script>
+<script src="app.js"></script>
+
+<script>
+
+/* ==========================
+   Dark Mode
+========================== */
+
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        themeBtn.innerHTML =
+        '<i class="fas fa-sun"></i>';
+
+        localStorage.setItem("theme","dark");
+
+    }else{
+
+        themeBtn.innerHTML =
+        '<i class="fas fa-moon"></i>';
+
+        localStorage.setItem("theme","light");
+
+    }
+
+});
+
+/* ==========================
+   Load Theme
+========================== */
+
+window.addEventListener("load",()=>{
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if(savedTheme==="dark"){
+
+        document.body.classList.add("dark");
+
+        themeBtn.innerHTML =
+        '<i class="fas fa-sun"></i>';
+
+    }
+
+});
+
+/* ==========================
+   Search Student
+========================== */
+
+const searchInput = document.getElementById("searchStudent");
+
+searchInput.addEventListener("keyup",function(){
+
+    const value = this.value.toLowerCase();
+
+    const rows =
+    document.querySelectorAll("#attendanceTable tr");
+
+    rows.forEach(row=>{
+
+        row.style.display =
+        row.innerText.toLowerCase().includes(value)
+        ? ""
+        : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

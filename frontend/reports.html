@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Reports | Student Attendance Reporting System
+    </title>
+
+    <!-- Main CSS -->
+
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="animation.css">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- ======================================
+         SIDEBAR
+    ======================================= -->
+
+    <aside class="sidebar">
+
+
+        <div class="logo">
+
+            <i class="fas fa-user-graduate"></i>
+
+            <h2>SARS</h2>
+
+        </div>
+
+
+        <ul>
+
+
+            <li>
+
+                <a href="dashboard.html">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="students.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Students
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="attendance.html">
+
+                    <i class="fas fa-calendar-check"></i>
+
+                    Attendance
+
+                </a>
+
+            </li>
+
+
+            <li class="active">
+
+                <a href="reports.html">
+
+                    <i class="fas fa-file-alt"></i>
+
+                    Reports
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html">
+
+                    <i class="fas fa-home"></i>
+
+                    Home
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+    </aside>
+
+
+  <!--Main content -->
+
+    <main class="main-content">
+
+
+         <!--Top Bar -->
+
+        <header class="topbar">
+
+
+            <h1>
+
+                Attendance Reports
+
+            </h1>
+
+
+            <div class="top-actions">
+
+
+                <button id="themeBtn">
+
+                    <i class="fas fa-moon"></i>
+
+                </button>
+
+
+                <div class="profile">
+
+                    <i class="fas fa-user-circle"></i>
+
+                    <span>
+
+                        Administrator
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!--Report Filter -->
+
+        <section class="glass attendance-table">
+
+
+            <div class="card-title">
+
+                <h2>
+
+                    Generate Report
+
+                </h2>
+
+            </div>
+
+
+            <div class="report-filters">
+
+
+                <!-- Student -->
+
+                <div class="input-box">
+
+                    <label for="reportStudent">
+
+                        Student
+
+                    </label>
+
+
+                    <select id="reportStudent">
+
+                        <option value="all">
+
+                            All Students
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- From Date -->
+
+                <div class="input-box">
+
+                    <label for="fromDate">
+
+                        From Date
+
+                    </label>
+
+
+                    <input
+                        type="date"
+                        id="fromDate">
+
+                </div>
+
+
+                <!-- To Date -->
+
+                <div class="input-box">
+
+                    <label for="toDate">
+
+                        To Date
+
+                    </label>
+
+
+                    <input
+                        type="date"
+                        id="toDate">
+
+                </div>
+
+
+                <!-- Generate -->
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="generateReport">
+
+                    <i class="fas fa-chart-column"></i>
+
+                    Generate Report
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="cards">
+
+
+            <div class="card glass">
+
+                <i class="fas fa-calendar-days"></i>
+
+                <h2 id="totalDays">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Total Days
+
+                </p>
+
+            </div>
+
+
+            <div class="card glass">
+
+                <i class="fas fa-user-check"></i>
+
+                <h2 id="reportPresent">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Present
+
+                </p>
+
+            </div>
+
+
+            <div class="card glass">
+
+                <i class="fas fa-user-xmark"></i>
+
+                <h2 id="reportAbsent">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Absent
+
+                </p>
+
+            </div>
+
+
+            <div class="card glass">
+
+                <i class="fas fa-percent"></i>
+
+                <h2 id="reportPercentage">
+
+                    0%
+
+                </h2>
+
+                <p>
+
+                    Attendance
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+                 <!-- REPORT SUMMARY -->
+
+        <section class="glass analytics-card">
+
+            <div class="card-title">
+
+                <h2>
+                    Attendance Summary
+                </h2>
+
+                <span id="reportStatus">
+                    No report generated
+                </span>
+
+            </div>
+
+
+            <div class="summary-list">
+
+                <div class="summary-item">
+
+                    <span>
+                        Selected Student
+                    </span>
+
+                    <strong id="selectedStudentName">
+                        All Students
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Report Period
+                    </span>
+
+                    <strong id="reportPeriod">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Present Days
+                    </span>
+
+                    <strong id="summaryPresent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Absent Days
+                    </span>
+
+                    <strong id="summaryAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Attendance Percentage
+                    </span>
+
+                    <strong id="summaryPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--  DETAILED REPORT TABLE -->
+
+        <section class="glass attendance-table">
+
+            <div class="table-header">
+
+                <h2>
+                    Detailed Attendance Report
+                </h2>
+
+
+                <input
+                    type="text"
+                    id="reportSearch"
+                    placeholder="Search report...">
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Roll No.
+                            </th>
+
+                            <th>
+                                Student Name
+                            </th>
+
+                            <th>
+                                Branch
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="reportTable">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                style="text-align:center;">
+
+                                Generate a report to
+                                display attendance records.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!--STUDENT-WISE SUMMARY -->
+
+        <section class="glass attendance-table">
+
+            <div class="table-header">
+
+                <h2>
+                    Student-wise Summary
+                </h2>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Roll No.
+                            </th>
+
+                            <th>
+                                Student Name
+                            </th>
+
+                            <th>
+                                Total Days
+                            </th>
+
+                            <th>
+                                Present
+                            </th>
+
+                            <th>
+                                Absent
+                            </th>
+
+                            <th>
+                                Percentage
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentSummaryTable">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                style="text-align:center;">
+
+                                No summary available.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- REPORT ACTIONS -->
+
+        <section class="analytics">
+
+
+            <!-- Export -->
+
+            <div class="analytics-card glass">
+
+                <div class="card-title">
+
+                    <h2>
+                        Report Actions
+                    </h2>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="exportReport">
+
+                        <i class="fas fa-file-csv"></i>
+
+                        Export CSV
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="printReport"
+                        onclick="window.print()">
+
+                        <i class="fas fa-print"></i>
+
+                        Print Report
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="clearReport">
+
+                        <i class="fas fa-rotate-left"></i>
+
+                        Clear Report
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Information -->
+
+            <div class="analytics-card glass">
+
+                <div class="card-title">
+
+                    <h2>
+                        Report Information
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    <i class="fas fa-info-circle"></i>
+
+                    Select a student or choose
+                    <strong>All Students</strong>.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <i class="fas fa-calendar"></i>
+
+                    Select a date range to
+                    generate the report.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <i class="fas fa-database"></i>
+
+                    Reports are generated from
+                    Local Storage attendance data.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <i class="fas fa-file-export"></i>
+
+                    Generated reports can be
+                    exported as CSV files.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+     <!-- ==========================================FOOTER-->
+
+        <footer class="dashboard-footer">
+
+            <p>
+                &copy; 2026 Student Attendance Reporting System
+            </p>
+
+            <p>
+                Developed using HTML, CSS & JavaScript
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!--JAVASCRIPT -->
+
+<script src="api.js"></script>
+
+<script src="reports.js"></script>
+
+<script src="app.js"></script>
+
+
+<script>
+
+ /* DARK / LIGHT MODE */
+
+const themeBtn =
+    document.getElementById("themeBtn");
+
+
+if (localStorage.getItem("theme") === "dark") {
+
+    document.body.classList.add("dark");
+
+    if (themeBtn) {
+
+        themeBtn.innerHTML =
+            '<i class="fas fa-sun"></i>';
+
+    }
+
+}
+
+
+if (themeBtn) {
+
+    themeBtn.addEventListener(
+        "click",
+        function () {
+
+            document.body.classList.toggle("dark");
+
+
+            if (
+                document.body.classList.contains("dark")
+            ) {
+
+                localStorage.setItem(
+                    "theme",
+                    "dark"
+                );
+
+                themeBtn.innerHTML =
+                    '<i class="fas fa-sun"></i>';
+
+            }
+
+            else {
+
+                localStorage.setItem(
+                    "theme",
+                    "light"
+                );
+
+                themeBtn.innerHTML =
+                    '<i class="fas fa-moon"></i>';
+
+            }
+
+        }
+    );
+
+}
+
+
+/* DATE DEFAULTS */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const fromDate =
+            document.getElementById("fromDate");
+
+        const toDate =
+            document.getElementById("toDate");
+
+
+        const today = localISODate();
+
+
+        if (fromDate && !fromDate.value) {
+
+            fromDate.value = today;
+
+        }
+
+
+        if (toDate && !toDate.value) {
+
+            toDate.value = today;
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   REPORT SEARCH
+========================================== */
+
+const reportSearch =
+    document.getElementById("reportSearch");
+
+
+if (reportSearch) {
+
+    reportSearch.addEventListener(
+        "input",
+        function () {
+
+            const keyword =
+                this.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const rows =
+                document.querySelectorAll(
+                    "#reportTable tr"
+                );
+
+
+            rows.forEach(function (row) {
+
+                const text =
+                    row.innerText
+                        .toLowerCase();
+
+
+                row.style.display =
+                    text.includes(keyword)
+                        ? ""
+                        : "none";
+
+            });
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   CLEAR REPORT
+========================================== */
+
+const clearReport =
+    document.getElementById("clearReport");
+
+
+if (clearReport) {
+
+    clearReport.addEventListener(
+        "click",
+        function () {
+
+            const student =
+                document.getElementById(
+                    "reportStudent"
+                );
+
+            const fromDate =
+                document.getElementById(
+                    "fromDate"
+                );
+
+            const toDate =
+                document.getElementById(
+                    "toDate"
+                );
+
+
+            if (student) {
+
+                student.value = "all";
+
+            }
+
+
+            if (fromDate) {
+
+                fromDate.value = "";
+
+            }
+
+
+            if (toDate) {
+
+                toDate.value = "";
+
+            }
+
+
+            const reportTable =
+                document.getElementById(
+                    "reportTable"
+                );
+
+
+            if (reportTable) {
+
+                reportTable.innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            style="text-align:center;">
+
+                            Generate a report to
+                            display attendance records.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+
+            const summaryTable =
+                document.getElementById(
+                    "studentSummaryTable"
+                );
+
+
+            if (summaryTable) {
+
+                summaryTable.innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            style="text-align:center;">
+
+                            No summary available.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+            generatedReport = [];
+
+
+            /* Reset statistics */
+
+            const elements = {
+
+                totalDays:
+                    "0",
+
+                reportPresent:
+                    "0",
+
+                reportAbsent:
+                    "0",
+
+                reportPercentage:
+                    "0%",
+
+                summaryPresent:
+                    "0",
+
+                summaryAbsent:
+                    "0",
+
+                summaryPercentage:
+                    "0%",
+
+                selectedStudentName:
+                    "All Students",
+
+                reportPeriod:
+                    "-",
+
+                reportStatus:
+                    "No report generated"
+
+            };
+
+
+            Object.keys(elements).forEach(
+                function (id) {
+
+                    const element =
+                        document.getElementById(id);
+
+
+                    if (element) {
+
+                        element.textContent =
+                            elements[id];
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Students | Student Attendance Reporting System</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="animation.css">
+<link rel="stylesheet" href="addstudent.css">
+<link rel="stylesheet" href="action.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<i class="fas fa-user-graduate"></i>
+
+<h2>SARS</h2>
+
+</div>
+
+<ul>
+
+<li>
+<a href="dashboard.html">
+<i class="fas fa-chart-line"></i>
+Dashboard
+</a>
+</li>
+
+<li class="active">
+<a href="students.html">
+<i class="fas fa-users"></i>
+Students
+</a>
+</li>
+
+<li>
+<a href="attendance.html">
+<i class="fas fa-calendar-check"></i>
+Attendance
+</a>
+</li>
+
+<li>
+<a href="reports.html">
+<i class="fas fa-file-alt"></i>
+Reports
+</a>
+</li>
+
+<li>
+<a href="index.html">
+<i class="fas fa-home"></i>
+Home
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<h1>Student Management</h1>
+
+<div class="top-actions">
+
+<button id="themeBtn">
+
+<i class="fas fa-moon"></i>
+
+</button>
+
+<div class="profile">
+
+<i class="fas fa-user-circle"></i>
+
+<span>Administrator</span>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- Student Form -->
+
+<section class="glass attendance-table add-student-section">
+
+    <div class="add-student-header">
+
+        <div class="header-icon">
+            <i class="fas fa-user-plus"></i>
+        </div>
+
+        <div>
+            <h2>Add New Student</h2>
+            <p>Enter student details to add them to the system</p>
+        </div>
+
+    </div>
+
+
+    <form id="studentForm" class="student-form">
+
+        <div class="form-grid">
+
+            <!-- =========================
+                 NAME
+            ========================== -->
+
+            <div class="input-box">
+
+                <i class="fas fa-user"></i>
+
+                <div class="input-content">
+
+                    <label for="studentName">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter full name"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SAT ID
+            ========================== -->
+
+            <div class="input-box">
+
+                <i class="fas fa-id-card"></i>
+
+                <div class="input-content">
+
+                    <label for="satId">
+                        Student ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="satId"
+                        placeholder="Enter Student ID(CSE40)
+                        "
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 ROLL NUMBER
+            ========================== -->
+
+            <div class="input-box">
+
+                <i class="fas fa-hashtag"></i>
+
+                <div class="input-content">
+
+                    <label for="rollNo">
+                        Roll Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rollNo"
+                        placeholder="Enter roll number"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BRANCH
+            ========================== -->
+
+            <div class="input-box">
+
+                <i class="fas fa-code-branch"></i>
+
+                <div class="input-content">
+
+                    <label for="branch">
+                        Branch
+                    </label>
+
+                    <select
+                        id="branch"
+                        required>
+
+                        <option value="">
+                            Select Branch
+                        </option>
+
+                        <option value="Computer Science and Engineering">
+                            Computer Science and Engineering
+                        </option>
+
+                        <option value="Civil Engineering">
+                            Civil Engineering
+                        </option>
+
+                        <option value="Mechanical Engineering">
+                            Mechanical Engineering
+                        </option>
+
+                        <option value="Electrical Engineering">
+                            Electrical Engineering
+                        </option>
+
+                        <option value="Electronics Engineering">
+                            Electronics Engineering
+                        </option>
+
+                        <option value="Leather Technology">
+                           Leather Technology
+                        </option>
+
+                    </select>
+
+                </div>
+                
+
+            </div>
+
+
+            <!-- =========================
+                 SEMESTER
+            ========================== -->
+
+            <div class="input-box">
+
+                <i class="fas fa-graduation-cap"></i>
+
+                <div class="input-content">
+
+                    <label for="semester">
+                        Semester
+                    </label>
+
+                    <select
+                        id="semester"
+                        required>
+
+                        <option value="">
+                            Select Semester
+                        </option>
+
+                        <option value="1st">
+                            1st Semester
+                        </option>
+
+                        <option value="2nd">
+                            2nd Semester
+                        </option>
+
+                        <option value="3rd">
+                            3rd Semester
+                        </option>
+
+                        <option value="4th">
+                            4th Semester
+                        </option>
+
+                        <option value="5th">
+                            5th Semester
+                        </option>
+
+                        <option value="6th">
+                            6th Semester
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             BUTTONS
+        ========================== -->
+
+        <div class="form-actions">
+
+            <button
+                type="reset"
+                class="reset-btn">
+
+                <i class="fas fa-rotate-left"></i>
+
+                Reset
+
+            </button>
+
+
+            <button
+                type="submit"
+                class="add-student-btn">
+
+                <i class="fas fa-plus-circle"></i>
+
+                <span>Add Student</span>
+
+                <i class="fas fa-arrow-right arrow-icon"></i>
+
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+<!-- ===== End of Part 1 ===== -->
+ <!-- ================= Student Statistics ================= -->
+
+<section class="cards">
+
+    <div class="card glass">
+
+        <i class="fas fa-users"></i>
+
+        <h2 id="totalStudents">
+
+            0
+
+        </h2>
+
+        <p>Total Students</p>
+
+    </div>
+
+    <div class="card glass">
+
+        <i class="fas fa-user-check"></i>
+
+        <h2 id="activeStudents">
+
+            0
+
+        </h2>
+
+        <p>Active Students</p>
+
+    </div>
+
+    <div class="card glass">
+
+        <i class="fas fa-user-plus"></i>
+
+        <h2 id="newStudents">
+
+            0
+
+        </h2>
+
+        <p>New Admissions</p>
+
+    </div>
+
+</section>
+
+<!-- ================= Student List ================= -->
+
+<section class="glass attendance-table">
+
+    <div class="table-header">
+
+        <h2>
+
+            Student List
+
+        </h2>
+
+        <input
+            type="text"
+            id="searchStudent"
+            placeholder="Search by Name or SAT ID">
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                 <th>S. NO.</th>
+                 <th>NAME</th>
+                <th>Student ID</th>
+                <th>Roll Number</th>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="studentTable">
+
+            <!-- Student records will be added dynamically -->
+
+            <tr>
+
+                <td colspan="7" style="text-align:center;">
+
+                    No students found.
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- ================= Quick Actions ================= -->
+
+
+<section class="analytics">
+
+ <div class="analytics-card glass">
+
+ <div class="card-title">
+
+ <h2>
+
+ Quick Actions
+
+ </h2>
+
+ </div>
+
+ <div class="quick-actions">
+
+<button
+ class="btn-primary"
+ onclick="document.getElementById('studentForm').reset();">
+
+ <i class="fas fa-eraser"></i>
+ Clear form
+
+</button>
+
+<button
+ class="btn-primary"
+ onclick="window.print();">
+
+ <i class="fas fa-print"></i>
+
+ Print List
+
+</button>
+
+<button
+ class="btn-primary"
+ onclick="exportStudents();">
+
+<i class="fas fa-file-export"></i>
+
+Export Data
+ </button>
+
+ </div>
+</div>
+
+
+    <div class="analytics-card glass">
+
+        <div class="card-title">
+
+            <h2>
+
+                Information
+
+            </h2>
+
+        </div>
+
+        <p>
+
+            ✔ Add new students using the form above.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            ✔ Search students instantly using the search box.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            ✔ Edit or delete records directly from the table.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            ✔ All data is stored securely in your browser using Local Storage.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ===== End of Part 2 ===== -->
+ <!-- ================= Footer ================= -->
+
+<footer class="dashboard-footer">
+
+    <p>&copy; 2026 Student Attendance Reporting System</p>
+
+    <p>Developed using HTML, CSS & JavaScript</p>
+
+</footer>
+
+</main>
+
+</div>
+
+<!-- ================= JavaScript Files ================= -->
+
+<script src="api.js"></script>
+<script src="students.js"></script>
+<script src="app.js"></script>
+
+<script>
+
+/* ==========================
+   Dark Mode
+========================== */
+
+const themeBtn = document.getElementById("themeBtn");
+
+if(localStorage.getItem("theme")==="dark"){
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML='<i class="fas fa-sun"></i>';
+
+}
+
+themeBtn.onclick=function(){
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        localStorage.setItem("theme","dark");
+
+        themeBtn.innerHTML='<i class="fas fa-sun"></i>';
+
+    }else{
+
+        localStorage.setItem("theme","light");
+
+        themeBtn.innerHTML='<i class="fas fa-moon"></i>';
+
+    }
+
+};
+
+/* ==========================
+   Search Students
+========================== */
+
+const searchBox=document.getElementById("searchStudent");
+
+searchBox.addEventListener("keyup",function(){
+
+    const value=this.value.toLowerCase();
+
+    const rows=document.querySelectorAll("#studentTable tr");
+
+    rows.forEach(function(row){
+
+        row.style.display=row.innerText.toLowerCase().includes(value)
+        ? ""
+        : "none";
+
+    });
+
+});
+
+/* ==========================
+   Export Students
+========================== */
+
+function exportStudents(){
+
+    const exportList = students || [];
+
+    if(exportList.length===0){
+
+        alert("No student data available.");
+
+        return;
+
+    }
+
+    let csv="Name,SAT ID,Roll No,Branch,Semester\n";
+
+    exportList.forEach(function(student){
+
+        csv+=`"${student.name}","${student.student_id}","${student.roll_no}","${student.branch}","${student.semester}"\n`;
+
+    });
+
+    const blob=new Blob([csv],{type:"text/csv"});
+
+    const url=URL.createObjectURL(blob);
+
+    const a=document.createElement("a");
+
+    a.href=url;
+
+    a.download="students.csv";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+</script>
+
+</body>
+
+</html>

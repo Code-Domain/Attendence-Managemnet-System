@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 const API_BASE_URL = ["localhost", "127.0.0.1"].includes(window.location.hostname)
     ? `http://${window.location.hostname}:5000`
     : "https://attendence-managemnet-system.onrender.com";
+=======
+const API_BASE_URL = "https://attendence-managemnet-system.onrender.com";
+>>>>>>> origin/main
 
 async function apiRequest(path, options = {}) {
     const response = await fetch(`${API_BASE_URL}${path}`, {

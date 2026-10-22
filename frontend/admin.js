@@ -22,12 +22,15 @@ function setView(name) {
     if (name === "appearance") loadSiteSettings();
 }
 
+<<<<<<< HEAD
 function updateOverviewProgress(summary) {
     $("#setupStudents").textContent = Number(summary.students) > 0 ? "Directory is ready" : "Add your first students";
     $("#setupSubjects").textContent = Number(summary.subjects) > 0 ? "Subjects are configured" : "Create your first subject";
     $("#setupTeachers").textContent = Number(summary.teachers) > 0 ? "Teaching team is in place" : "Add your teaching team";
 }
 
+=======
+>>>>>>> origin/main
 async function loadSiteSettings() {
     try {
         const {settings} = await PortalAPI.admin.siteSettings();
@@ -54,7 +57,10 @@ async function loadAdmin() {
         $("#statStudents").textContent = summary.students;
         $("#statSubjects").textContent = summary.subjects;
         $("#statTeachers").textContent = summary.teachers;
+<<<<<<< HEAD
         updateOverviewProgress(summary);
+=======
+>>>>>>> origin/main
         await Promise.all([loadStudents(), loadTeachers(), loadSubjects()]);
     } catch (_) { location.replace("admin-login.html"); }
 }
@@ -100,7 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             if (id) await PortalAPI.admin.updateStudent(id, data); else await PortalAPI.admin.createStudent(data);
             event.target.reset(); $("#studentRowId").value = ""; $("#studentFormTitle").textContent = "Add a student"; $("#saveStudentButton").textContent = "Save student"; $("#cancelStudentEdit").hidden = true;
+<<<<<<< HEAD
             showAdminMessage(id ? "Student updated." : "Student added."); await loadStudents(); const s = await PortalAPI.admin.summary(); $("#statStudents").textContent = s.students; updateOverviewProgress(s);
+=======
+            showAdminMessage(id ? "Student updated." : "Student added."); await loadStudents(); const s = await PortalAPI.admin.summary(); $("#statStudents").textContent = s.students;
+>>>>>>> origin/main
         } catch (error) { showAdminMessage(error.message, "error"); }
     });
     $("#cancelStudentEdit").addEventListener("click", () => { $("#studentForm").reset(); $("#studentRowId").value = ""; $("#studentFormTitle").textContent = "Add a student"; $("#saveStudentButton").textContent = "Save student"; $("#cancelStudentEdit").hidden = true; });
@@ -115,7 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
             $("#studentFormTitle").textContent = "Edit student"; $("#saveStudentButton").textContent = "Save changes"; $("#cancelStudentEdit").hidden = false; window.scrollTo({top:0,behavior:"smooth"});
         }
         if (remove && confirm("Delete this student and their attendance history?")) {
+<<<<<<< HEAD
             try { await PortalAPI.admin.deleteStudent(remove.dataset.deleteStudent); await loadStudents(); const s = await PortalAPI.admin.summary(); $("#statStudents").textContent = s.students; updateOverviewProgress(s); showAdminMessage("Student deleted."); }
+=======
+            try { await PortalAPI.admin.deleteStudent(remove.dataset.deleteStudent); await loadStudents(); const s = await PortalAPI.admin.summary(); $("#statStudents").textContent = s.students; showAdminMessage("Student deleted."); }
+>>>>>>> origin/main
             catch (error) { showAdminMessage(error.message, "error"); }
         }
     });
@@ -123,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#teacherForm").addEventListener("submit", async event => {
         event.preventDefault();
         const data = {name:$("#teacherName").value,teacher_id:$("#teacherId").value,phone:$("#teacherPhone").value,email:$("#teacherEmail").value,password:$("#teacherPassword").value};
+<<<<<<< HEAD
         try { await PortalAPI.admin.createTeacher(data); event.target.reset(); showAdminMessage("Teacher account created."); await loadTeachers(); const s = await PortalAPI.admin.summary(); $("#statTeachers").textContent = s.teachers; updateOverviewProgress(s); }
         catch (error) { showAdminMessage(error.message, "error"); }
     });
@@ -148,6 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
             showAdminMessage("Teacher password updated.");
         } catch (error) { showAdminMessage(error.message, "error"); }
     });
+=======
+        try { await PortalAPI.admin.createTeacher(data); event.target.reset(); showAdminMessage("Teacher account created."); await loadTeachers(); const s = await PortalAPI.admin.summary(); $("#statTeachers").textContent = s.teachers; }
+        catch (error) { showAdminMessage(error.message, "error"); }
+    });
+>>>>>>> origin/main
     $("#teachersRows").addEventListener("click", async event => {
         const reset = event.target.closest("[data-reset-teacher]");
         const toggle = event.target.closest("[data-toggle-teacher]");
@@ -156,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             if (edit) {
                 const teacher = adminTeachers.find(item => item.id === Number(edit.dataset.editTeacher));
+<<<<<<< HEAD
                 if (!teacher) return;
                 $("#editTeacherRowId").value = teacher.id; $("#editTeacherName").value = teacher.name;
                 $("#editTeacherId").value = teacher.teacher_id; $("#editTeacherPhone").value = teacher.phone;
@@ -167,6 +188,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 $("#resetTeacherPasswordForm").reset(); $("#resetTeacherPasswordDialog").showModal();
                 return;
             }
+=======
+                const name = prompt("Teacher name:", teacher.name); if (name === null) return;
+                const teacher_id = prompt("Teacher ID / username:", teacher.teacher_id); if (teacher_id === null) return;
+                const phone = prompt("Phone number:", teacher.phone); if (phone === null) return;
+                const email = prompt("Email address:", teacher.email); if (email === null) return;
+                await PortalAPI.admin.updateTeacherProfile(teacher.id, {name, teacher_id, phone, email});
+                showAdminMessage("Teacher profile updated.");
+            }
+            if (reset) { const password = prompt("Enter a new temporary password (minimum 10 characters):"); if (password === null) return; await PortalAPI.admin.updateTeacher(reset.dataset.resetTeacher, {password}); showAdminMessage("Teacher password updated."); }
+>>>>>>> origin/main
             if (toggle) { await PortalAPI.admin.updateTeacher(toggle.dataset.toggleTeacher, {active:toggle.dataset.active !== "1"}); showAdminMessage("Teacher access updated."); }
             if (remove) {
                 if (!confirm("Permanently remove this teacher account? Attendance history remains, but subject assignments and schedule are removed.")) return;
@@ -180,7 +211,11 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const data = {name:$("#subjectName").value,branch:$("#subjectBranch").value,semester:$("#subjectSemester").value,batch:$("#subjectBatch").value,range_mode:$("#rangeMode").value,roll_start:$("#rollStart").value,roll_end:$("#rollEnd").value,teacher_ids:[...document.querySelectorAll("[name=assignedTeacher]:checked")].map(input => Number(input.value))};
         const id = $("#subjectRowId").value;
+<<<<<<< HEAD
         try { if (id) await PortalAPI.admin.updateSubject(id, data); else await PortalAPI.admin.createSubject(data); event.target.reset(); $("#subjectRowId").value = ""; $("#subjectFormTitle").textContent = "Create a subject"; $("#saveSubjectButton").textContent = "Create subject & assignments"; $("#cancelSubjectEdit").hidden = true; document.querySelectorAll(".custom-range").forEach(el => el.hidden = true); showAdminMessage(id ? "Subject updated." : "Subject and teacher assignments saved."); await loadSubjects(); const s = await PortalAPI.admin.summary(); $("#statSubjects").textContent = s.subjects; updateOverviewProgress(s); }
+=======
+        try { if (id) await PortalAPI.admin.updateSubject(id, data); else await PortalAPI.admin.createSubject(data); event.target.reset(); $("#subjectRowId").value = ""; $("#subjectFormTitle").textContent = "Create a subject"; $("#saveSubjectButton").textContent = "Create subject & assignments"; $("#cancelSubjectEdit").hidden = true; document.querySelectorAll(".custom-range").forEach(el => el.hidden = true); showAdminMessage(id ? "Subject updated." : "Subject and teacher assignments saved."); await loadSubjects(); const s = await PortalAPI.admin.summary(); $("#statSubjects").textContent = s.subjects; }
+>>>>>>> origin/main
         catch (error) { showAdminMessage(error.message, "error"); }
     });
     $("#subjectsRows").addEventListener("click", async event => {
@@ -204,7 +239,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         if (!remove || !confirm("Delete this subject? Existing attendance for it will be kept without a subject link.")) return;
+<<<<<<< HEAD
         try { await PortalAPI.admin.deleteSubject(remove.dataset.deleteSubject); await loadSubjects(); const s = await PortalAPI.admin.summary(); $("#statSubjects").textContent = s.subjects; updateOverviewProgress(s); showAdminMessage("Subject deleted."); }
+=======
+        try { await PortalAPI.admin.deleteSubject(remove.dataset.deleteSubject); await loadSubjects(); const s = await PortalAPI.admin.summary(); $("#statSubjects").textContent = s.subjects; showAdminMessage("Subject deleted."); }
+>>>>>>> origin/main
         catch (error) { showAdminMessage(error.message, "error"); }
     });
     $("#cancelSubjectEdit").addEventListener("click", () => { $("#subjectForm").reset(); $("#subjectRowId").value = ""; $("#subjectFormTitle").textContent = "Create a subject"; $("#saveSubjectButton").textContent = "Create subject & assignments"; $("#cancelSubjectEdit").hidden = true; document.querySelectorAll(".custom-range").forEach(el => el.hidden = true); });

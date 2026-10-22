@@ -14,11 +14,14 @@ function teacherView(name) {
     document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === `view-${name}`));
     document.querySelectorAll(".portal-nav [data-view]").forEach(button => button.classList.toggle("active", button.dataset.view === name));
 }
+<<<<<<< HEAD
 function updateTeacherOverview() {
     teacher$("#teacherSubjectCount").textContent = teacherSubjects.length;
     teacher$("#teacherPeriodCount").textContent = scheduleItems.length;
     teacher$("#teacherDayCount").textContent = new Set(scheduleItems.map(item => item.day_of_week)).size;
 }
+=======
+>>>>>>> origin/main
 function populateSubjectSelects() {
     const options = teacherSubjects.map(s => `<option value="${s.id}">${teacherEsc(s.name)} · ${teacherEsc(s.branch)} · Sem ${teacherEsc(s.semester)} · ${teacherEsc(s.batch)}</option>`).join("");
     ["#attendanceSubject", "#reportSubject"].forEach(id => { const el = teacher$(id); el.innerHTML = options || '<option value="">No assigned subjects</option>'; });
@@ -34,7 +37,11 @@ async function startTeacher() {
             return;
         }
         const data = await PortalAPI.teacher.subjects(); teacherSubjects = data.subjects; populateSubjectSelects(); renderScheduleChoices(); renderScheduleGrid();
+<<<<<<< HEAD
         const schedule = await PortalAPI.teacher.schedule(); scheduleItems = schedule.schedule.map(row => ({...row,day_of_week:Number(row.day_of_week),start_time:String(row.start_time).slice(0,5),end_time:String(row.end_time).slice(0,5)})); renderScheduleGrid(); updateTeacherOverview();
+=======
+        const schedule = await PortalAPI.teacher.schedule(); scheduleItems = schedule.schedule.map(row => ({...row,day_of_week:Number(row.day_of_week),start_time:String(row.start_time).slice(0,5),end_time:String(row.end_time).slice(0,5)})); renderScheduleGrid();
+>>>>>>> origin/main
         const today = localISODate(); teacher$("#attendanceDate").value = today; teacher$("#reportFrom").value = today; teacher$("#reportTo").value = today;
     } catch (_) { location.replace("teacher-login.html"); }
 }
@@ -78,7 +85,11 @@ function downloadCSV(rows, filename) {
 
 document.addEventListener("DOMContentLoaded", () => {
     startTeacher();
+<<<<<<< HEAD
     document.querySelectorAll(".portal-nav [data-view], [data-teacher-go]").forEach(button => button.addEventListener("click", () => teacherView(button.dataset.view || button.dataset.teacherGo)));
+=======
+    document.querySelectorAll(".portal-nav [data-view]").forEach(button => button.addEventListener("click", () => teacherView(button.dataset.view)));
+>>>>>>> origin/main
     teacher$("#logoutButton").addEventListener("click", async () => { await PortalAPI.logout(); location.replace("teacher-login.html"); });
     teacher$("#scheduleSubjects").addEventListener("dragstart", event => {
         const source = event.target.closest("[data-subject-id]"); if (!source) return;
@@ -96,9 +107,15 @@ document.addEventListener("DOMContentLoaded", () => {
     teacher$("#scheduleGrid").addEventListener("dragleave", event => event.target.closest(".drop-slot")?.classList.remove("drag-over"));
     teacher$("#scheduleGrid").addEventListener("drop", event => {
         const cell=event.target.closest(".drop-slot"); if(!cell)return; event.preventDefault(); cell.classList.remove("drag-over");
+<<<<<<< HEAD
         try { addScheduleEntry(Number(cell.dataset.day),cell.dataset.start,JSON.parse(event.dataTransfer.getData("application/json"))); updateTeacherOverview(); } catch (_) { teacherNotice("Could not add that schedule block.","error"); }
     });
     teacher$("#scheduleGrid").addEventListener("click", event => { const remove=event.target.closest("[data-remove-slot]"); if(remove){const [day,start]=remove.dataset.removeSlot.split(":");scheduleItems=scheduleItems.filter(item=>!(item.day_of_week===Number(day)&&item.start_time===start));renderScheduleGrid();updateTeacherOverview();} });
+=======
+        try { addScheduleEntry(Number(cell.dataset.day),cell.dataset.start,JSON.parse(event.dataTransfer.getData("application/json"))); } catch (_) { teacherNotice("Could not add that schedule block.","error"); }
+    });
+    teacher$("#scheduleGrid").addEventListener("click", event => { const remove=event.target.closest("[data-remove-slot]"); if(remove){const [day,start]=remove.dataset.removeSlot.split(":");scheduleItems=scheduleItems.filter(item=>!(item.day_of_week===Number(day)&&item.start_time===start));renderScheduleGrid();} });
+>>>>>>> origin/main
     teacher$("#saveSchedule").addEventListener("click", async () => {
         try { const result=await PortalAPI.teacher.saveSchedule(scheduleItems); teacherNotice(`Schedule saved (${result.count} blocks).`); }
         catch(error){teacherNotice(error.message,"error");}

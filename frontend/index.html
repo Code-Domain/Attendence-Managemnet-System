@@ -21,6 +21,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+<link rel="stylesheet" href="site-shell.css">
 </head>
 
 <body>
@@ -719,28 +720,6 @@
 
 <script>
 
-const themeBtn = document.getElementById("themeBtn");
-
-themeBtn.onclick = () => {
-
-    document.body.classList.toggle("dark");
-
-    if(document.body.classList.contains("dark")){
-
-        themeBtn.innerHTML =
-        '<i class="fas fa-sun"></i>';
-
-    }
-
-    else{
-
-        themeBtn.innerHTML =
-        '<i class="fas fa-moon"></i>';
-
-    }
-
-};
-
 // Scroll Button
 
 const scrollBtn = document.getElementById("scrollTop");
@@ -781,5 +760,6 @@ scrollBtn.onclick = ()=>{
 <script src="site-theme.js"></script>
 <script src="app.js"></script>
 
+<script src="site-shell.js"></script>
 </body>
 </html>

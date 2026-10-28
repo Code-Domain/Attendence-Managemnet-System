@@ -16,14 +16,16 @@ DB_CONFIG = {
 FLASK_HOST = os.getenv("FLASK_HOST", "127.0.0.1")
 FLASK_PORT = int(os.getenv("FLASK_PORT", "5000"))
 SECRET_KEY = os.getenv("SECRET_KEY", "local-development-secret-change-before-deploy")
-FRONTEND_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv(
-        "FRONTEND_ORIGINS",
-        "http://127.0.0.1:5501,http://localhost:5501",
-    ).split(",")
-    if origin.strip()
-]
+FRONTEND_ORIGINS = sorted({
+    "http://127.0.0.1:5501",
+    "http://localhost:5501",
+    "https://attendence-managemnet-system-frontend-slqi3mugv.vercel.app",
+    *(
+        origin.strip()
+        for origin in os.getenv("FRONTEND_ORIGINS", "").split(",")
+        if origin.strip()
+    ),
+})
 SESSION_COOKIE_SAMESITE = os.getenv("SESSION_COOKIE_SAMESITE", "Lax")
 SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "false").lower() == "true"
 

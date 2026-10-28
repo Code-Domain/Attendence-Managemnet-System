@@ -35,5 +35,5 @@ CONTACT_RECIPIENT_EMAIL = os.getenv("CONTACT_RECIPIENT_EMAIL", "").strip()
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com").strip()
 SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
 SMTP_USERNAME = os.getenv("SMTP_USERNAME", CONTACT_RECIPIENT_EMAIL).strip()
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "wydkonaewjskeyur")
 SMTP_USE_SSL = os.getenv("SMTP_USE_SSL", "true").lower() == "true"

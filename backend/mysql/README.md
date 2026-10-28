@@ -11,6 +11,7 @@ For a brand-new database, run `schema.sql` once instead; it already includes the
 ## Local development
 
 1. In this folder, copy `.env.example` to `.env` and set your MySQL host, port, username, password, database, and a long random `SECRET_KEY`. Keep `.env` private.
+   For the public contact form, set `CONTACT_RECIPIENT_EMAIL` to the inbox that should receive submissions and configure `SMTP_USERNAME` and `SMTP_PASSWORD` for the sending account. The default Gmail transport uses `smtp.gmail.com` with SSL on port `465`; Gmail accounts generally need an app password when SMTP password authentication is used. Never commit `.env` or put these values in frontend files.
 2. Create and activate the Python environment, then install dependencies:
 
    ```powershell

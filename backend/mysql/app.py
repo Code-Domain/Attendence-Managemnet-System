@@ -1,4 +1,5 @@
 import getpass
+import re
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -13,6 +14,7 @@ from auth import auth_bp
 from db import execute
 from werkzeug.security import generate_password_hash
 from db import fetch_one
+from mailer import MailConfigurationError, send_contact_emails
 
 app = Flask(__name__)
 app.config.update(
@@ -72,13 +74,23 @@ def contact():
     message = str(data.get("message", "")).strip()
     if not all((name, email, subject, message)):
         return jsonify({"success": False, "message": "All contact fields are required"}), 400
-    if len(name) > 150 or len(email) > 254 or len(subject) > 200:
+    if len(name) > 150 or len(email) > 254 or len(subject) > 200 or len(message) > 10000:
         return jsonify({"success": False, "message": "One or more fields are too long"}), 400
+    if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+        return jsonify({"success": False, "message": "Enter a valid email address"}), 400
     execute(
         "INSERT INTO contact_messages (name, email, subject, message) VALUES (%s,%s,%s,%s)",
         (name, email, subject, message)
     )
-    return jsonify({"success": True, "message": "Message received successfully"}), 201
+    try:
+        send_contact_emails(name, email, subject, message)
+    except MailConfigurationError:
+        app.logger.error("Contact email is not configured; submission was stored but no email was sent")
+        return jsonify({"success": False, "message": "Your message was saved, but email confirmation is not available right now. Please try again later."}), 503
+    except Exception:
+        app.logger.exception("Could not send contact-form email")
+        return jsonify({"success": False, "message": "Your message was saved, but email delivery failed. Please try again later."}), 503
+    return jsonify({"success": True, "message": "Message received. A confirmation email has been sent to you."}), 201
 
 @app.errorhandler(404)
 def not_found(_):
